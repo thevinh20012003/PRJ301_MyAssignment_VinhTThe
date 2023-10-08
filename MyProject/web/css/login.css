@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 8, 2023, 5:10:09 PM
+    Author     : Admin
+*/
+
+body {
+    background-image: url('link_background.jpg'); /* Thay 'link_background.jpg' bằng URL của hình nền */
+    background-size: cover;
+}
+
+header {
+    background-color: orange;
+    text-align: left;
+    padding: 10px;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content img {
+    max-height: 50px;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 20px auto; /* Để căn giữa chiều ngang */
+    width: 33.33%; /* Chiếm 1/3 chiều rộng */
+    text-align: center; /* Để căn giữa theo chiều ngang */
+    border-radius: 10px;
+}
+
+select, input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    color: green;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
