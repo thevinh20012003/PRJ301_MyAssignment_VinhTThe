@@ -7,17 +7,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Admin
 */
 
-body {
-    background-image: url('link_background.jpg'); /* Thay 'link_background.jpg' bằng URL của hình nền */
-    background-size: cover;
+*{
+    padding: 0;
+    margin: 0;
 }
-
+/* Đặt kích thước mặc định cho header và sử dụng flex-wrap */
 header {
-    background-color: orange;
     text-align: left;
     padding: 10px;
-    color: white;
+    color: black;
+    background: linear-gradient(-180deg,#f53d2d,#f63);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Cho phép các phần tử trong header xuống dòng khi không đủ không gian */
+    width: 100%;
+    gap:10px;
 }
+
+/* Media query cho màn hình có chiều rộng tối đa là 768px (ví dụ cho kích thước điện thoại di động) */
+@media (max-width: 768px) {
+    header {
+        /* Điều chỉnh kích thước và font-size cho điện thoại di động */
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+
+/* Media query cho màn hình có chiều rộng tối đa là 1024px (ví dụ cho máy tính bảng) */
+@media (max-width: 1024px) {
+    header {
+        /* Điều chỉnh kích thước và font-size cho máy tính bảng */
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
 
 .header-content {
     display: flex;
@@ -29,14 +53,24 @@ header {
     max-height: 50px;
 }
 
-.form-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    margin: 20px auto; /* Để căn giữa chiều ngang */
-    width: 33.33%; /* Chiếm 1/3 chiều rộng */
-    text-align: center; /* Để căn giữa theo chiều ngang */
-    border-radius: 10px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Để căn giữa chiều dọc */
 }
+
+.form-container {
+    background-color: rgba(192, 192, 192, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 33.33%;
+    text-align: center;
+    border: 4px solid rgba(192, 192, 192, 0.2);
+    ;
+    margin: 20px auto 0; /* Để căn giữa theo chiều ngang */
+}
+
 
 select, input[type="text"], input[type="password"] {
     width: 100%;
@@ -47,7 +81,7 @@ select, input[type="text"], input[type="password"] {
 }
 
 button {
-    background-color: orange;
+    background-color: #C12F1D;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -56,12 +90,22 @@ button {
 }
 
 footer {
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     text-align: center;
-    color: green;
+    color: black;
     margin-top: 20px;
 }
 
 a {
     text-decoration: none;
-    color: green;
+    color: #337ab7;
+}
+select, input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo kích thước bao gồm cả border và padding */
 }

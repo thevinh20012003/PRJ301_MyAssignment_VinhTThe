@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="viewSchedule.css">
+        <link rel="stylesheet" href="css/viewSchedule.css">
         <title>View Schedule</title>
     </head>
 
@@ -20,14 +20,14 @@
                 <div class="col-6">
                     <ul class="nav">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">View Schedule</a></li>
+                        <li>View Schedule</li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-outline-primary">linhnvhe176341</button>
-                        <button type="button" class="btn btn-outline-primary">logout</button>
-                        <button type="button" class="btn btn-outline-primary">CAMPUS: FPTU-Hòa Lac</button>
+                        <button type="button" >VinhTThe176288</button>
+                        <button type="button" >logout</button>
+                        <button type="button" >CAMPUS: FPTU-Hòa Lac</button>
                     </div>
                 </div>
             </div>

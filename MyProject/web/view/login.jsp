@@ -10,87 +10,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login jsp</title>
-        <link rel="stylesheet" href="login.css">
-        <style>
-            body {
-                background-image: url('background_login.jpg'); /* Thay 'link_background.jpg' bằng URL của hình nền */
-                background-size: cover;
-            }
-
-            header {
-                background-color: orange;
-                text-align: left;
-                padding: 10px;
-                color: black;
-
-            }
-
-            .header-content {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .header-content img {
-                max-height: 50px;
-            }
-
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh; /* Để căn giữa chiều dọc */
-            }
-
-            .form-container {
-                background-color: rgba(255, 255, 255, 0.8);
-                padding: 20px;
-                border-radius: 10px;
-                width: 33.33%; /* Chiếm 1/3 chiều rộng */
-                text-align: center; /* Để căn giữa theo chiều ngang */
-            }
-
-            select, input[type="text"], input[type="password"] {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-
-            button {
-                background-color: orange;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            footer {
-                text-align: center;
-                color: green;
-                margin-top: 20px;
-            }
-
-            a {
-                text-decoration: none;
-                color: green;
-            }
-        </style>
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
         <header>
             <div class="logo_fpt">
-                <img src="logo_fpt.jpg" alt="Logo_Fpt"></a>
+                <img src="img/Logo-FU-03.jpg" alt="Logo_Fpt" width="" height="100"></a>
             </div>
             <div class="header-content">
                 <h1>FPT University Academic Portal</h1>
             </div>
             <div>
                 <p>FAP mobile app(myFAP) is ready at</p>
-                <a href="https://apps.apple.com/us/app/myfap/id1527723314"><img src="link_image1.jpg" alt="Image 1"></a>
-                <a href="https://play.google.com/store/apps/details?id=com.fuct"><img src="link_image1.jpg" alt="Image 2"></a>
+                <a href="https://apps.apple.com/us/app/myfap/id1527723314"><img src="https://fap.fpt.edu.vn/images/app-store.png" alt="Apple_logo" width="120" height="40"></a>
+                <a href="https://play.google.com/store/apps/details?id=com.fuct"><img src="https://fap.fpt.edu.vn/images/play-store.png" alt="google_play" width="120" height="40"></a>
             </div>
         </header>
         <div class="form-container">
