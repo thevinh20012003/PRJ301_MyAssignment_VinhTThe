@@ -30,12 +30,6 @@
             <h2 style="color: orange;">Đăng nhập FAP</h2>
             <form>
                 <select>
-                    <option disabled selected value="" style="color: rgba(0, 0, 0, 0.3);">Sinh viên, giảng viên, phụ huynh</option>
-                    <option value="sinhvien">Sinh viên</option>
-                    <option value="giangvien">Giảng viên</option>
-                    <option value="phuhuynh">Phụ huynh</option>
-                </select>
-                <select>
                     <option disabled selected value="" style="color: rgba(0, 0, 0, 0.3);">Select campus</option>
                     <option value="fu-hoalac">FU - Hòa Lạc</option>
                     <option value="fu-hochiminh">FU - Hồ Chí Minh</option>
@@ -43,7 +37,7 @@
                     <option value="fu-cantho">FU - Cần Thơ</option>
                     <option value="fu-quynhon">FU - Quy Nhơn</option>
                 </select>
-                <input type="text" placeholder="Enter gmail">
+                <input type="text" id="emailInput" placeholder="Enter gmail" >
                 <input type="password" placeholder="Enter password">
                 <button>Đăng nhập</button>
             </form>
@@ -52,6 +46,7 @@
             @Power by <a href="https://fpt.edu.vn/">FPT University</a> | <a href="https://cmshn.fpt.edu.vn/">CMS</a> | <a href="https://library.fpt.edu.vn/">Library books24x7</a> | <a href="https://library.books24x7.com/login.asp?ic=0">books24x7</a>
         </footer>
     </body>
+    <script src="js/check_email.js"></script>
 </html>
 
 
