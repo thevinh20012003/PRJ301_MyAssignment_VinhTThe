@@ -4,9 +4,8 @@
  */
 package dal;
 
-import entities.Account;
 import entities.BaseEntity;
-import entities.Campus;
+import entities.Time_Slot;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,40 +17,44 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class AccountDBContext extends DBContext {
+public class TimeSlotDBContext extends DBContext {
 
-    public ArrayList<Account> list() {
-        ArrayList<Account> list = new ArrayList<>();
-        return list;
+    @Override
+    public ArrayList<Time_Slot> list() {
+        ArrayList<Time_Slot> slots = new ArrayList<>();
+        try {
+            String sql = "SELECT [tid]\n"
+                    + "      ,[description]\n"
+                    + "  FROM [Time_slot]";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Time_Slot t = new Time_Slot();
+                t.setId(rs.getInt("tid"));
+                t.setDescription(rs.getString("description"));
+                slots.add(t);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TimeSlotDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return slots;
     }
 
-    public ArrayList<Account> getAccount(Account acc) {
-        ArrayList<Account> listAccounts = new ArrayList<>();
-        try {
-            String sql = "SELECT [username]\n"
-                    + "      ,[password]\n"
-                    + "      ,[cid]\n"
-                    + "      ,[stuid]\n"
-                    + "  FROM [Account] WHERE username=? AND password=?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, acc.getUsername());
-            stm.setString(2, acc.getPassword());
-            ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                Account a = new Account();
-                a.setUsername(rs.getString("username"));
-                a.setPassword(rs.getString("password"));
-                a.setStuid(rs.getInt("stuid"));
+    public void insert(Time_Slot entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
-                Campus c = new Campus();
-                c.setCid(rs.getInt("cid"));
-                a.setCid(c);
-                listAccounts.add(a);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return listAccounts;
+    public void update(Time_Slot entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void delete(Time_Slot entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Time_Slot get(Time_Slot entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -73,4 +76,5 @@ public class AccountDBContext extends DBContext {
     public BaseEntity get(BaseEntity entity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

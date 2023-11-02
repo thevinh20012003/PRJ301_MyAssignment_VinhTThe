@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Campus {
+public class Campus extends BaseEntity{
     private int cid;
     private String cname;
     ArrayList<Account> listStudents = new ArrayList<>();

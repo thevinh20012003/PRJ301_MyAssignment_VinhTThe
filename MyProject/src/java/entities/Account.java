@@ -4,11 +4,12 @@
  */
 package entities;
 
+
 /**
  *
  * @author Admin
  */
-public class Account {
+public class Account extends BaseEntity{
     private String username;
     private String password;
     private int cid;
@@ -74,6 +75,10 @@ public class Account {
     }
 
     public Account() {
+    }
+
+    public void setCid(Campus c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -4,13 +4,13 @@
  */
 package dal;
 
-import entities.Account;
 import entities.BaseEntity;
-import entities.Campus;
+import jakarta.websocket.Session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,40 +18,28 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class AccountDBContext extends DBContext {
+public class SessionDBContext extends DBContext {
 
-    public ArrayList<Account> list() {
-        ArrayList<Account> list = new ArrayList<>();
-        return list;
-    }
-
-    public ArrayList<Account> getAccount(Account acc) {
-        ArrayList<Account> listAccounts = new ArrayList<>();
+    public ArrayList<Session> getSession(int iid, Date from, Date to) {
         try {
-            String sql = "SELECT [username]\n"
-                    + "      ,[password]\n"
-                    + "      ,[cid]\n"
-                    + "      ,[stuid]\n"
-                    + "  FROM [Account] WHERE username=? AND password=?";
+            ArrayList<Session> sessions = new ArrayList<>();
+            String sql = "Select s.sesid,s.date,r.rid,t.tid,g.gid,g.gname,su.suid,su.suname,i.iid,i.iname from Session s \n"
+                    + "inner join Instructor i on i.iid = s.iid\n"
+                    + "inner join [Group] g on g.gid = s.gid\n"
+                    + "inner join Time_slot t on s.tid = t.tid\n"
+                    + "inner join room r on r.rid =s.rid\n"
+                    + "inner join subject su on su.suid = g.suid\n"
+                    + "where i.iid =? and s.date >= ? and s.date<= ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, acc.getUsername());
-            stm.setString(2, acc.getPassword());
+            stm.setInt(1, iid);
+            stm.setDate(2, (java.sql.Date) from);
+            stm.setDate(3, (java.sql.Date) to);
             ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                Account a = new Account();
-                a.setUsername(rs.getString("username"));
-                a.setPassword(rs.getString("password"));
-                a.setStuid(rs.getInt("stuid"));
 
-                Campus c = new Campus();
-                c.setCid(rs.getInt("cid"));
-                a.setCid(c);
-                listAccounts.add(a);
-            }
         } catch (SQLException ex) {
-            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return listAccounts;
+        return null;
     }
 
     @Override
@@ -73,4 +61,10 @@ public class AccountDBContext extends DBContext {
     public BaseEntity get(BaseEntity entity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public ArrayList list() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

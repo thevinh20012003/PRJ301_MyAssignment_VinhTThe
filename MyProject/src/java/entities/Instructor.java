@@ -4,60 +4,50 @@
  */
 package entities;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Student extends BaseEntity{
-
-    private int stid;
-    private String stname;
+/**
+ *
+ * @author Admin
+ */
+class Instructor extends BaseEntity{
+    private int id;
+    private String name;
     private Date dob;
     private boolean gender;
     private String phone_number;
     private String email;
+    private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<Group> groups = new ArrayList<>();
-    private Account account;
 
-    public Student(Account account) {
-        this.account = account;
+    public Instructor() {
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Student() {
-    }
-
-    public Student(int stid, String stname, Date dob, boolean gender, String phone_number, String email) {
-        this.stid = stid;
-        this.stname = stname;
+    public Instructor(int id, String name, Date dob, boolean gender, String phone_number, String email) {
+        this.id = id;
+        this.name = name;
         this.dob = dob;
         this.gender = gender;
         this.phone_number = phone_number;
         this.email = email;
     }
 
-    public int getStid() {
-        return stid;
+    public int getId() {
+        return id;
     }
 
-    public void setStid(int stid) {
-        this.stid = stid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getStname() {
-        return stname;
+    public String getName() {
+        return name;
     }
 
-    public void setStname(String stname) {
-        this.stname = stname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getDob() {
@@ -92,6 +82,14 @@ public class Student extends BaseEntity{
         this.email = email;
     }
 
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+
     public ArrayList<Group> getGroups() {
         return groups;
     }
@@ -99,4 +97,5 @@ public class Student extends BaseEntity{
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
     }
+    
 }
