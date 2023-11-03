@@ -7,11 +7,12 @@ package entities;
 import java.sql.Date;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author Admin
  */
-class Session extends BaseEntity {
+public class Session extends BaseEntity {
 
     private int id;
     private Date date;

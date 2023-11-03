@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Time_Slot {
+public class Time_Slot extends BaseEntity{
 
     private int id;
     private String description;

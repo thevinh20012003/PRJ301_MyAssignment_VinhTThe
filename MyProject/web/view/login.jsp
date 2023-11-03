@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login jsp</title>
+        <link rel="icon" href="img/logoTitle.png" type="img/x-icon"/>
+        <title>FPT University Academic Portal</title>
         <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
@@ -42,9 +43,7 @@
                 <button>Đăng nhập</button>
             </form>
         </div>
-        <footer>
-            @Power by <a href="https://fpt.edu.vn/">FPT University</a> | <a href="https://cmshn.fpt.edu.vn/">CMS</a> | <a href="https://library.fpt.edu.vn/">Library books24x7</a> | <a href="https://library.books24x7.com/login.asp?ic=0">books24x7</a>
-        </footer>
+        <jsp:include page="footer.jsp"/> 
     </body>
     <script src="js/check_email.js"></script>
 </html>

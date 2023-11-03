@@ -23,16 +23,14 @@ public abstract class DBContext<T extends BaseEntity> {
 
     public DBContext() {
         try {
-            String user = "sa";
-            String pass = "123456";
             String url = "jdbc:sqlserver://VINH-QUYNH\\THEVINH:1433;databaseName=SE1753";
+            String user = "sa";
+            String password = "123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException ex) {
-           Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-       } catch (SQLException ex) {
-           Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-       }
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, "Error in DBContext constructor", ex);
+        }
     }
 
     public abstract ArrayList<T> list();

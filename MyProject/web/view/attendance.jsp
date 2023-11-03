@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="icon" href="img/logoTitle.png" type="img/x-icon"/>
+        <title>Attendance</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        ${requestScope.ses.group.gname}-${requestScope.ses.subject.suname} at ${requestScope.ses.room.rid}
+        - ${requestScope.ses.time.description}
+        <br/>
     </body>
 </html>

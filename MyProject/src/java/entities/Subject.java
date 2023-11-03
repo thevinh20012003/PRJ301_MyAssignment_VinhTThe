@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-class Subject extends BaseEntity{
+public class Subject extends BaseEntity{
     private String suid;
     private String suname;
     private int termno;

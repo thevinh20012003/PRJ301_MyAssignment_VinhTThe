@@ -4,7 +4,9 @@
  */
 package controller;
 
+import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
+import entities.Session;
 import entities.Time_Slot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -43,10 +45,11 @@ public class TimeTable extends HttpServlet {
                 Logger.getLogger(TimeTable.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        // oke
          TimeSlotDBContext timeDB = new TimeSlotDBContext();
          ArrayList<Time_Slot> slots = timeDB.list();
          
+        // 
         SessionDBContext sessDB = new SessionDBContext();
         ArrayList<Session> sessions = sessDB.getSessions(instructorid, dates.get(0), dates.get(dates.size()-1));
          
@@ -56,10 +59,7 @@ public class TimeTable extends HttpServlet {
          request.setAttribute("to", dates.get(dates.size()-1));
          request.setAttribute("sessions", sessions);
          
-         
-         request.getRequestDispatcher("../view/instructor/timetable.jsp").forward(request, response);
-        
-        
+         request.getRequestDispatcher("view/timetable.jsp").forward(request, response);          
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
