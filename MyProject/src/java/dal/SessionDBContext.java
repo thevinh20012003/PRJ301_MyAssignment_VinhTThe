@@ -4,6 +4,7 @@
  */
 package dal;
 
+import entities.Attendance;
 import entities.Group;
 import entities.Room;
 import entities.Session;
@@ -136,5 +137,56 @@ public class SessionDBContext extends DBContext<Session> {
             Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void addAttendances(Session ses) {
+        try {
+            connection.setAutoCommit(false);
+            // Step 1: update isAtt into present
+            String sql_update_isAtt = "update [Session] SET isAtt = 1 where sesid=?";
+            PreparedStatement stm_update_isAtt = connection.prepareStatement(sql_update_isAtt);
+            stm_update_isAtt.setInt(1, ses.getId());
+            stm_update_isAtt.executeUpdate();
+
+            String sql_remove_atts = "Delete Attendance where sesid=?";
+            PreparedStatement stm_remove_atts = connection.prepareStatement(sql_remove_atts);
+            stm_remove_atts.setInt(1, ses.getId());
+            stm_remove_atts.executeUpdate();
+            
+            for (Attendance att : ses.getAtts()) {
+                String sql_insert_att = "INSERT INTO [Attendance]\n"
+                        + "           ([sesid]\n"
+                        + "           ,[stid]\n"
+                        + "           ,[status]\n"
+                        + "           ,[description]\n"
+                        + "           ,[date_time])\n"
+                        + "     VALUES\n"
+                        + "           (?\n"
+                        + "           ,?\n"
+                        + "           ,?\n"
+                        + "           ,?\n"
+                        + "           ,GETDATE())";
+                PreparedStatement stm_insert_att = connection.prepareStatement(sql_insert_att);
+                stm_insert_att.setInt(1, ses.getId());
+                stm_insert_att.setInt(2, att.getStudent().getStid());
+                stm_insert_att.setBoolean(3, att.isStatus());
+                stm_insert_att.setString(4, att.getDescription());
+                stm_insert_att.executeUpdate();
+            }
+            connection.commit();
+        } catch (SQLException ex) {
+            try {
+                connection.rollback();
+                Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
