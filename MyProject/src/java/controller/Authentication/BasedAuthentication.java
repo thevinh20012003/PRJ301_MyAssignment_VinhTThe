@@ -4,8 +4,10 @@
  */
 package controller.Authentication;
 
+import dal.AccountDBContext;
 import entities.Account;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,39 +16,71 @@ import java.io.IOException;
 abstract public class BasedAuthentication extends HttpServlet {
 
     boolean isAuthenticated(HttpServletRequest request) {
-        Account loggedAccount = (Account) request.getSession().getAttribute("loggedAccount");
-        return loggedAccount != null;
+        // get infor account from Session
+        Account account = (Account) request.getSession().getAttribute("account");
+        if (account != null) {
+            return true;
+        } else {
+            String user = null;
+            String pass = null;
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cooky : cookies) {
+                if (user != null && pass != null) {
+                    break;
+                }
+                if (cooky.equals("email")) {
+                    user = cooky.getValue();
+                }
+                if (cooky.equals("pass")) {
+                    pass = cooky.getValue();
+                }
+            }
+            if (user != null && pass != null) {
+                AccountDBContext db = new AccountDBContext();
+                Account param = new Account();
+                param.setUsername(user);
+                param.setPassword(pass);
+                // check accou is exin=st in database?
+                account = db.getAccount(param.getUsername(), param.getPassword());
+                if (account != null) {
+                    // save session
+                    request.getSession().setAttribute("account", db);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
     }
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (isAuthenticated(request)) {
-            doGet(request, response, (Account) request.getSession().getAttribute("loggedAccount"));
+            processGet(request, response, (Account) request.getSession().getAttribute("account"));
         } else {
-            response.getWriter().print("Access denied");
+            request.getRequestDispatcher("view/login.jsp").forward(request, response);
         }
     }
 
-    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response, Account loggedAccount)
+    protected abstract void processGet(HttpServletRequest request, HttpServletResponse response, Account LoggedUser)
             throws ServletException, IOException;
 
+    protected abstract void processPost(HttpServletRequest request, HttpServletResponse response, Account LoggedUser)
+            throws ServletException, IOException;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (isAuthenticated(request)) {
-            doPost(request, response, (Account) request.getSession().getAttribute("loggedAccount"));
+            processPost(request, response, (Account) request.getSession().getAttribute("account"));
         } else {
-            response.getWriter().print("Access denied");
+            request.getRequestDispatcher("view/login.jsp").forward(request, response);
         }
     }
 
-    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response, Account loggedAccount)
-            throws ServletException, IOException;
-
-   
     @Override
     public String getServletInfo() {
         return "Short description";

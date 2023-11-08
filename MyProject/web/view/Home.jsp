@@ -1,20 +1,108 @@
 <%-- 
-    Document   : Home
-    Created on : Oct 19, 2023, 5:16:27 PM
+    Document   : home
+    Created on : Oct 16, 2023, 1:44:04 PM
     Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        
+        <title>Home</title>
+        <meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet" type="text/css" />
+        <style>
+            body {
+                margin-left: 200px;
+                margin-right: 200px;
+            }
+        </style>
+        <link rel="icon" href="img/logoTitle.png" type="img/x-icon"/>
     </head>
+
     <body>
-        <footer>
-            @Power by <a href="https://fpt.edu.vn/">FPT University</a> | <a href="https://cmshn.fpt.edu.vn/">CMS</a> | <a href="https://library.fpt.edu.vn/">Library books24x7</a> | <a href="https://library.books24x7.com/login.asp?ic=0">books24x7</a>
-        </footer>
+        <form action="home" method="POST">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1><span>FPT University Academic Portal</span></h1>
+                </div>
+                <div class="col-md-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="auto-style1"><strong>FAP mobile app (myFAP) is ready at</strong></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://apps.apple.com/app/id1527723314">
+                                        <img src="https://fap.fpt.edu.vn/images/app-store.png"
+                                             style="width: 120px; height: 40px" alt="apple store"></a></td>
+                                <td><a href="https://play.google.com/store/apps/details?id=com.fuct">
+                                        <img src="https://fap.fpt.edu.vn/images/play-store.png"
+                                             style="width: 120px; height: 40px" alt="google store"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 breadcrumb">
+                        <div id="ctl00_divUser" style="float: right; margin-right: 16px;">
+                            <a href="?view=user">
+                                <span id="ctl00_lblLogIn" class="label label-success">${sessionScope.account.displayname}</span></a> |
+                            <a href="<%= request.getContextPath() %>/logout" class="label label-success">logout</a> |
+                            <span id="ctl00_lblCampusName" class="label label-success" "> Campus: FU-Hòa Lạc</span>
+                        </div>
+                        <!-- <div style="position: absolute; top: -35px; right: 30px; width: 150px;"></div> -->
+                    </div>
+                </div>
+
+                <div class="row" style="flex-wrap: nowrap;">
+                    <div class="col-md-6 table-grade">
+                        <h2>Time Table</h2>
+                        <p>View teaching timetables for all subjects.</p>
+                        <button><a href="<%= request.getContextPath() %>/timetable?id=${sessionScope.account.instructor.id}" class="btn btn-grade">View Time Tables</a></button>
+                    </div>
+                    <div class="col-md-6 table-grade">
+                        <h2>Attendance report</h2>
+                        <p>View attendance report for instructor.</p>
+                        <form action="attendance" method="GET">
+                            <input type="text" name="id" placeholder="User ID">
+                            <button type="submit" class="btn btn-grade">View Attendance report</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div id="ctl00_divSupport" style="text-align: center">
+                        <br>
+                        <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span
+                            style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13.333333969116211px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">Phòng
+                            dịch vụ sinh viên</span>: Email: <a
+                            href="mailto:dichvusinhvien@fe.edu.vn">dichvusinhvien@fe.edu.vn</a>.
+                        Điện thoại: <span class="style1"
+                                          style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13.333333969116211px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">(024)7308.13.13
+                        </span>
+                        <br>
+                    </div>
+
+                    <p style="text-align: center">
+                        © Powered by <a href="http://fpt.edu.vn" target="_blank">FPT University</a>&nbsp;|&nbsp;
+                        <a href="http://cms.fpt.edu.vn/" target="_blank">CMS</a>&nbsp;|&nbsp; <a
+                            href="http://library.fpt.edu.vn" target="_blank">library</a>&nbsp;|&nbsp; <a
+                            href="http://library.books24x7.com" target="_blank">books24x7</a>
+                        <span id="ctl00_lblHelpdesk"></span>
+                    </p>
+                </div>
+            </div>
+
+        </form>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
     </body>
+
 </html>

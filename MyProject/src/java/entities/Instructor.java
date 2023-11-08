@@ -7,12 +7,12 @@ package entities;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 /**
  *
  * @author Admin
  */
-class Instructor extends BaseEntity{
+public class Instructor extends BaseEntity {
+
     private int id;
     private String name;
     private Date dob;
@@ -21,17 +21,19 @@ class Instructor extends BaseEntity{
     private String email;
     private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<Group> groups = new ArrayList<>();
+    Account account;
 
     public Instructor() {
     }
 
-    public Instructor(int id, String name, Date dob, boolean gender, String phone_number, String email) {
+    public Instructor(int id, String name, Date dob, boolean gender, String phone_number, String email, Account account) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.gender = gender;
         this.phone_number = phone_number;
         this.email = email;
+        this.account = account;
     }
 
     public int getId() {
@@ -97,5 +99,13 @@ class Instructor extends BaseEntity{
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
     }
-    
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
 }

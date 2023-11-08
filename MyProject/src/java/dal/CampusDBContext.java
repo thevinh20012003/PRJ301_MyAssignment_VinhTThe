@@ -28,7 +28,8 @@ public class CampusDBContext extends DBContext {
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
               Campus c = new Campus();
-              c.setCname("cname");
+              c.setCid(rs.getInt("cid"));
+              c.setCname(rs.getString("cname"));
               return c;
             }
         } catch (SQLException ex) {

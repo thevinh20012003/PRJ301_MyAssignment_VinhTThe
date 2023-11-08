@@ -4,14 +4,15 @@
  */
 package controller;
 
+import controller.Authentication.BasedAuthentication;
 import dal.AttendedDBContext;
 import dal.SessionDBContext;
+import entities.Account;
 import entities.Session;
 import entities.Attendance;
 import entities.Student;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -20,10 +21,10 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class attendance extends HttpServlet {
+public class attendance extends BasedAuthentication {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response,Account LoggedUser)
             throws ServletException, IOException {
         SessionDBContext sesDB = new SessionDBContext();
         Session s = new Session();
@@ -40,7 +41,7 @@ public class attendance extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response,Account LoggedUser)
             throws ServletException, IOException {
         // Get a array student id as for each in attendance.jsp
         String[] stids = request.getParameterValues("stid");
