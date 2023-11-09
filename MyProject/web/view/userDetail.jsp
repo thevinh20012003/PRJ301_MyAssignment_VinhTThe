@@ -10,9 +10,80 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet" type="text/css" />
+        <style>
+            body {
+                margin-left: 200px;
+                margin-right: 200px;
+            }
+        </style>
+        <link rel="icon" href="img/logoTitle.png" type="img/x-icon"/>
     </head>
     <body>
-         <div class="footer">
+        <form action="home" method="POST">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1><span>FPT University Academic Portal</span></h1>
+                </div>
+                <div class="col-md-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="auto-style1"><strong>FAP mobile app (myFAP) is ready at</strong></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://apps.apple.com/app/id1527723314">
+                                        <img src="https://fap.fpt.edu.vn/images/app-store.png"
+                                             style="width: 120px; height: 40px" alt="apple store"></a></td>
+                                <td><a href="https://play.google.com/store/apps/details?id=com.fuct">
+                                        <img src="https://fap.fpt.edu.vn/images/play-store.png"
+                                             style="width: 120px; height: 40px" alt="google store"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 breadcrumb">
+                        <div id="ctl00_divUser" style="float: right; margin-right: 16px;">
+                            <a href="?view=user">
+                                <span id="ctl00_lblLogIn" class="label label-success">${sessionScope.account.displayname}</span></a> |
+                            <a href="<%= request.getContextPath() %>/logout" class="label label-success">logout</a> |
+                            <span id="ctl00_lblCampusName" class="label label-success" "> Campus: FU-Hòa Lạc</span>
+                        </div>
+                        <!-- <div style="position: absolute; top: -35px; right: 30px; width: 150px;"></div> -->
+                    </div>
+                </div>
+
+                <div class="row" style="flex-wrap: nowrap;">
+                    <div class="col-md-12 table-grade">
+                        <h2>User Detail</h2>
+                        <table border="1">
+                            
+                            <tbody>
+                                <tr>
+                                    <td>Login</td>
+                                    <td>${sessionScope.account.displayname}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Image</td>
+                                    <td><img src="https://w7.pngwing.com/pngs/698/726/png-transparent-graphy-male-taxi-driver-miscellaneous-photography-transport.png" alt="male" width="" height="100"></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>${sessionScope.account.username}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="footer">
                     <div id="ctl00_divSupport" style="text-align: center">
                         <br>
                         <b>Mọi góp ý, thắc mắc xin liên hệ: </b><span
@@ -33,5 +104,10 @@
                         <span id="ctl00_lblHelpdesk"></span>
                     </p>
                 </div>
+            </div>
+
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
     </body>
 </html>

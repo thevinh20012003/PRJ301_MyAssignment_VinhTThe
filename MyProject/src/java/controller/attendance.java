@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class attendance extends BasedAuthentication {
 
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response,Account LoggedUser)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response, Account LoggedUser)
             throws ServletException, IOException {
         SessionDBContext sesDB = new SessionDBContext();
         Session s = new Session();
@@ -41,7 +41,7 @@ public class attendance extends BasedAuthentication {
     }
 
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response,Account LoggedUser)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response, Account LoggedUser)
             throws ServletException, IOException {
         // Get a array student id as for each in attendance.jsp
         String[] stids = request.getParameterValues("stid");
@@ -49,6 +49,7 @@ public class attendance extends BasedAuthentication {
         Session ses = new Session();
         ses.setId(Integer.parseInt(request.getParameter("sesid")));
         ArrayList<Attendance> atts = new ArrayList<>();
+        String mess = null;
         //each stid is a studentid
         for (String stid : stids) {
             int id = Integer.parseInt(stid);
@@ -57,14 +58,14 @@ public class attendance extends BasedAuthentication {
             s.setStid(id);
             a.setStudent(s);
             a.setSession(ses);
-            a.setDescription(request.getParameter("description") + stid);
+            a.setDescription(request.getParameter("description" + stid));
             a.setStatus(request.getParameter("status" + stid).equals("present"));
             atts.add(a);
         }
         ses.setAtts(atts);
         SessionDBContext sesDB = new SessionDBContext();
         sesDB.addAttendances(ses);
-        response.getWriter().println("done");
+        mess="Update Successfull!!!";
     }
 
     @Override

@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-12 breadcrumb">
                     <div id="ctl00_divUser" style="float: right; margin-right: 16px;">
-                        <a href="?view=user">
+                        <a href="view/userDetail.jsp?view=user">
                             <span id="ctl00_lblLogIn" class="label label-success">${sessionScope.account.displayname}</span></a> |
                         <a href="<%= request.getContextPath() %>/logout" class="label label-success">logout</a> |
                         <span id="ctl00_lblCampusName" class="label label-success" "> Campus: FU-Hòa Lạc</span>

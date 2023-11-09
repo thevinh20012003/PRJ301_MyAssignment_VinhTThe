@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-md-12 breadcrumb">
                         <div id="ctl00_divUser" style="float: right; margin-right: 16px;">
-                            <a href="?view=user">
+                            <a href="view/userDetail.jsp?view=user">
                                 <span id="ctl00_lblLogIn" class="label label-success">${sessionScope.account.displayname}</span></a> |
                             <a href="<%= request.getContextPath() %>/logout" class="label label-success">logout</a> |
                             <span id="ctl00_lblCampusName" class="label label-success" "> Campus: FU-Hòa Lạc</span>
@@ -61,18 +61,10 @@
                 </div>
 
                 <div class="row" style="flex-wrap: nowrap;">
-                    <div class="col-md-6 table-grade">
+                    <div class="col-md-12 table-grade">
                         <h2>Time Table</h2>
                         <p>View teaching timetables for all subjects.</p>
                         <button><a href="<%= request.getContextPath() %>/timetable?id=${sessionScope.account.instructor.id}" class="btn btn-grade">View Time Tables</a></button>
-                    </div>
-                    <div class="col-md-6 table-grade">
-                        <h2>Attendance report</h2>
-                        <p>View attendance report for instructor.</p>
-                        <form action="attendance" method="GET">
-                            <input type="text" name="id" placeholder="User ID">
-                            <button type="submit" class="btn btn-grade">View Attendance report</button>
-                        </form>
                     </div>
                 </div>
 

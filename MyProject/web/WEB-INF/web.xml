@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
     <servlet>
         <servlet-name>TimeTable</servlet-name>
         <servlet-class>controller.TimeTable</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeTable</servlet-name>
+        <url-pattern>/timetable</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>controller.Authentication.login</servlet-class>
@@ -13,33 +18,25 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>check</servlet-name>
-        <servlet-class>controller.check</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>attendance</servlet-name>
-        <servlet-class>controller.attendance</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>controller.Authentication.logout</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TimeTable</servlet-name>
-        <url-pattern>/timetable</url-pattern>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>check</servlet-name>
-        <url-pattern>/check</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>attendance</servlet-name>
+        <servlet-class>controller.attendance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>attendance</servlet-name>
         <url-pattern>/attendance</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>logout</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>login</welcome-file>
+    </welcome-file-list>
     <session-config>
         <session-timeout>
             30

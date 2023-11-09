@@ -19,10 +19,6 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class login extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
